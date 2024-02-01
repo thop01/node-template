@@ -1,8 +1,16 @@
 <html>
 
 <head>
-  <title>Express</title>
+  <title>Boilerplate 2024</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script type="module" defer>
+    fetch('api/index')
+      .then(response=>response.json())
+      .then(data=>{
+        document.querySelector("h1").textContent = data.title;
+        document.querySelector("p").textContent = data.description;
+      });
+  </script>
 </head>
 
 <body>

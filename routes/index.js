@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express';
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+const router = express.Router();
+
+
+/* GET INDEX data. */
+router.get('/', function (req, res, next) {
+  res.json({ title: 'Express Boilerplate', 
+  description: `
+  Dit is een boilerplate die bedoeld is om je te helpen snel aan 
+  de slag te gaan met het bouwen van geweldige webapplicaties met 
+  behulp van Express.js`, 
+  author: 'P. Thong', 
+  year: 2024});
 });
 
-module.exports = router;
+export default router;
