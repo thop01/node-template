@@ -2,20 +2,46 @@
 
 <head>
   <title>Boilerplate 2024</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <script type="module" defer>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Express</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#">About</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+  <main>
+    <p>Welcome to Express</p>
+    <div class="card-container">
+      <div class="card">
+        <h2>Kaart 1</h2>
+        <p>Dit is de eerste kaart</p>
+      </div>
+      <!-- Here come cards from javascript -->
+    </div>
+  </main>
+  <footer>
+    &copy; 2024
+  </footer>
+    
+    <script src="js/main.js"></script>
+    <script defer>
+      const CardContainer = document.querySelector(".card-container");
+      
     fetch('api/index')
       .then(response=>response.json())
       .then(data=>{
         document.querySelector("h1").textContent = data.title;
         document.querySelector("p").textContent = data.description;
       });
-  </script>
-</head>
 
-<body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+      CardContainer.appendChild(getHtmlCard("Kaart 2", "Dit is het tweede kaart vanuit client-side javascript"));
+
+  </script>
 </body>
 
 </html>
