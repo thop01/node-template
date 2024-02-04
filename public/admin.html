@@ -1,0 +1,61 @@
+<html>
+
+<head>
+    <title>Boilerplate admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Admin Boilerplate</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+    <main>
+
+        
+            <form class="add-card-form" action="api/cards" method="post" target="uutf">
+            <iframe name="uutf" style="display:none;"></iframe>
+            <h2>Kaart toevoegen</h2>
+            <label for="title">Titel</label>
+            <input id="title" name="title" type="text" required />
+            <label for="body">body</label>
+            <textarea id="body" name="body" cols="30" rows="10" required></textarea>
+            <button class="add-btn" type="submit"> Voeg toe </button>
+             </form>
+       
+        <h2>Cards</h2>
+        <div class="card-container">
+            <!-- Here come cards from javascript -->
+        </div>
+    </main>
+    <footer>
+        &copy; 2024
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script defer>
+        const CardContainer = document.querySelector(".card-container");
+        const AddButton = document.querySelector("button.add-btn");
+        fetch('api/cards')
+            .then(response => response.json())
+            .then(cards => {
+                for (const card of cards) {
+                    CardContainer.prepend(getHtmlCard(card.title, card.body));
+                }
+            });
+
+            document.querySelector("form").addEventListener("submit", function(event, form){
+                const Title = document.querySelector("input#title");
+                const Body = document.querySelector("textarea#body");
+                CardContainer.prepend(getHtmlCard(Title.value, Body.value));
+
+            });
+    </script>
+</body>
+
+</html>

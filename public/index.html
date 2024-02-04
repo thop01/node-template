@@ -41,6 +41,14 @@
 
       CardContainer.appendChild(getHtmlCard("Kaart 2", "Dit is het tweede kaart vanuit client-side javascript"));
 
+      fetch('api/cards')
+            .then(response => response.json())
+            .then(cards => {
+                for (const card of cards) {
+                    CardContainer.appendChild(getHtmlCard(card.title, card.body));
+                }
+            });
+
   </script>
 </body>
 

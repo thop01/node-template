@@ -31,7 +31,9 @@ a {
   margin:10px;
   display:flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap:10px;
   .card {
     padding:10px;
       width:250px;
@@ -39,3 +41,16 @@ a {
       border: 1px solid var(--main-color);
    }
 }
+
+/* Specific for admin.html */
+.add-card-form{
+  padding:10px;
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+  /* max-width:800px; */
+  border: 1px solid var(--main-color);
+
+}
+
+input, textarea { padding:10px; }

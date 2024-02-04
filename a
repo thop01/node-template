@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>Boilerplate admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Admin Boilerplate</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="admin.html">Admin</a>
+    </nav>
+    <main>
+
+
+        <iframe name="uutf" style="display:none;"></iframe>  <!-- https://stackoverflow.com/questions/2866063/submit-form-without-page-reloading -->
+        <form class="add-card-form" target="uutf" method="post">
+            <h2>Kaart toevoegen</h2>
+            <label for="title">Titel</label>
+            <input id="title" name="title" type="text" required />
+            <label for="body">body</label>
+            <textarea id="body" name="body" cols="30" rows="10" required></textarea>
+            <button class="add-btn"> Voeg toe </button>
+        </form>
+        <h2>Cards</h2>
+        <div class="card-container">
+            <!-- Here come cards from javascript -->
+        </div>
+    </main>
+    <footer>
+        &copy; 2024
+    </footer>
+
+
+    <script src="js/main.js"></script>
+    <script defer>
+        const CardContainer = document.querySelector(".card-container");
+        const AddButton = document.querySelector("button.add-btn");
+        
+        fetch('api/cards')
+            .then(response => response.json())
+            .then(cards => {
+                for (const card of cards) {
+                    CardContainer.appendChild(getHtmlCard(card.title, card.body));
+                }
+            });
+
+        AddButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            console.log("pre")
+         
+            const Title = document.querySelector("input#title");
+            const Body = document.querySelector("textarea#body");
+            if(Title.value && Body.value){
+                console.log("JA?")
+                console.log(Title.value, Body.value);
+                fetch("api/cards",
+                    {
+                        method: "POST",
+                        body: JSON.stringify({ title: "t", body: "b" }),
+                    })
+                    .then(response => {
+                        console.log(response.body)
+                    })
+                    .catch(error => console.log(error))
+
+            }
+            
+        });
+
+
+
+    </script>
+</body>
+
+</html>
