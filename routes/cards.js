@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
   res.json(cards);
 });
 
-/* GET All cards data. */
+/* GET the card data back */
 router.post('/', function (req, res, next) {
     console.log("POST request on cards");
     const card = req.body;
