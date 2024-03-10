@@ -45,7 +45,7 @@
             .then(response => response.json())
             .then(cards => {
                 for (const card of cards) {
-                    CardContainer.appendChild(getHtmlCard(card.title, card.body));
+                    CardContainer.appendChild(getHtmlCard(card.title, card.description));
                 }
             });
 

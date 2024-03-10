@@ -1,4 +1,6 @@
+import 'dotenv/config';
 import express from 'express';
+import {MongoClient, ServerApiVersion} from 'mongodb';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
@@ -17,6 +19,8 @@ app.use(express.static('public'));
 app.use('/api/index', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/cards', cardsRouter);
+
+console.log("test");
 
 
 export default app;
