@@ -33,13 +33,13 @@ a {
   margin:10px;
   display:flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: center;
   flex-wrap: wrap;
   gap:10px;
   .card {
     padding:10px;
       width:250px;
-      height:100px;
+      height:250px;
       border: 1px solid var(--main-color);
    }
 }
