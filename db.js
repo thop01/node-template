@@ -7,5 +7,5 @@ try {
 } catch(e) {
   console.error(e);
 }
-let db = conn.db("express_boilerplate");
+let db = conn.db("data");
 export default db;
